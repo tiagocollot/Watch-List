@@ -13,6 +13,12 @@ Bookmark.delete_all
 Movie.delete_all
 List.delete_all
 
+file = URI.open('https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-Console-Set.jpg/1200px-NES-Console-Set.jpg')
+list = List.new(name: 'A great Foundation')
+list.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+list.save
+
+
 url = 'http://tmdb.lewagon.com/movie/top_rated'
 movies_serialized = URI.open(url).read
 movies = JSON.parse(movies_serialized)
