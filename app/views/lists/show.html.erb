@@ -8,9 +8,14 @@
 <hr>
 
 <p>
-<strong>Add a bookmark:</strong>
   <%= render 'bookmarks/new' %>
 </p>
+
+<p>
+  Bookmark:
+</p>
+
+
 
 <% @list.bookmarks.each do |bookmark| %>
   <div class="card-product">
@@ -21,7 +26,10 @@
         <p><%= bookmark.movie.overview %></p>
         <p>Rating: <%= bookmark.movie.rating %></p>
       </div>
-  </div>
+      <%= link_to bookmark_path(bookmark), method: :delete do%>
+     <i class="fas fa-dumpster-fire"></i>
+      <% end %>
+    </div>
 <% end %>
 
 <hr>

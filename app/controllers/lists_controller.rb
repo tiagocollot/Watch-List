@@ -1,31 +1,31 @@
 class ListsController < ApplicationController
   # before_action :find_list, except: :destroy
-#   def index
-#     @lists = List.all
-#   end
+  # def index
+  #   @lists = List.all
+  # end
 
-#   def show
-#     @list = List.find(params[:id])
-#   end
+  # def show
+  #   @list = List.find(params[:id])
+  # end
 
-#   def new
-#     @list = List.new
-#   end
+  # def new
+  #   @list = List.new
+  # end
 
-#   def create
-#     @list = List.new(list_params)
-#     @list.save
-#   end
+  # def create
+  #   @list = List.new(list_params)
+  #   @list.save
+  # end
 
-#    private
+  #  private
 
-#   def list_params
-#     params.require(:lists).permit(:name)
-#   end
+  # def list_params
+  #   params.require(:list).permit(:name)
+  # end
 
-#   def find_list
-#     @list = list.find(params[:id])
-#   end
+  # def find_list
+  #   @list = list.find(params[:id])
+  # end
 # end
   before_action :set_list, only: %i[show destroy]
   def index
@@ -34,7 +34,11 @@ class ListsController < ApplicationController
   def new
     @list = List.new
   end
-  def show; end
+
+  def show
+    @bookmark = Bookmark.new
+  end
+
   def create
     @list = List.new(list_params)
     if @list.save
@@ -43,6 +47,7 @@ class ListsController < ApplicationController
       render :new
     end
   end
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_list
